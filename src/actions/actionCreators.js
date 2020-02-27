@@ -3,7 +3,7 @@ import { FETCH_PURCHASES_REQUEST, FETCH_PURCHASES_SUCCESS, FETCH_PURCHASES_FAILU
 export async function fetchPurchases(dispatch) {
     dispatch(fetchPurchasesRequest());
         try {
-            const response = await fetch('http://localhost:8000/api/purchases');
+            const response = await fetch('https://context-api-crud.herokuapp.com/api/purchases');
             if (!response.ok) {
                 throw new Error();
             }
@@ -17,7 +17,7 @@ export async function fetchPurchases(dispatch) {
 export async function addPurchase(dispatch, purchase) {
     dispatch(fetchPurchasesRequest());
     try {
-        const response = await fetch('http://localhost:8000/api/purchases', {
+        const response = await fetch('https://context-api-crud.herokuapp.com/api/purchases', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -37,7 +37,7 @@ export async function addPurchase(dispatch, purchase) {
 export async function editPurchaseSubmit(dispatch, purchase, id) {
     dispatch(fetchPurchasesRequest());
     try {
-        const response = await fetch(`http://localhost:8000/api/purchases/${id}`, {
+        const response = await fetch(`https://context-api-crud.herokuapp.com/api/purchases/${id}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -133,9 +133,7 @@ export function resetPurchase() {
 export function fetchPurchaseDescriptionRequest() {
     return {
         type: FETCH_PURCHASE_DESCRIPTION_REQUEST,
-        payload: {
-            
-        }
+        payload: {}
     };
 }
 

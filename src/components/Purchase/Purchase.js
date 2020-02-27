@@ -6,7 +6,7 @@ export default function Purchase({ id, amount, category, description, open }) {
     const { state: { detailedPurchase: {purchase} }, dispatch } = useContext(PurchasesContext);
     
     const handleDelete = async (id) => {
-        const response = await fetch(`http://localhost:8000/api/purchases/${id}`, {
+        const response = await fetch(`https://context-api-crud.herokuapp.com/api/purchases/${id}`, {
             method: 'DELETE'
         });
         const purchases = await response.json();
@@ -19,7 +19,7 @@ export default function Purchase({ id, amount, category, description, open }) {
     };
     const handleDescription = async () => {
         dispatch(fetchPurchaseDescriptionRequest());
-        const response = await fetch(`http://localhost:8000/api/purchases/${id}`);
+        const response = await fetch(`https://context-api-crud.herokuapp.com/api/purchases/${id}`);
         const purchase = await response.json();
         dispatch(fetchPurchaseDescriptionSuccess(purchase.description));
         dispatch(toggleOpen(id));
